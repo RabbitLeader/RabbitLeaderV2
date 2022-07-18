@@ -35,7 +35,7 @@ contract DutchAuction {
 
     function initialize(address nft_) public {
         require(_lock == 1);
-
+        
         seller = payable(msg.sender);
         require(nft_ != address(0), "The nft address is zero address.");
         _nft = IERC721A(nft_);
@@ -80,6 +80,8 @@ contract DutchAuction {
 
     }
 
+    function bid() 
+
 
     /**
      * @dev return `block.timestamp` or `now`
@@ -92,3 +94,20 @@ contract DutchAuction {
 
 
 }
+
+
+
+/**
+ * 开始价格为5 ETH
+ * 每分钟减少0.01 ETH的价格
+ * 在2ETH以下不停止减少价格
+ * 当用户支付时，停止合约中的捐赠
+ */
+
+ contract Auction {
+    uint256 public immutable startPrice = 5 ethers;
+    uint256 public immutable startAt;
+    uint256 public immutable duration = 300 minutes;
+    uint256 public immutable discountRate = 0.01 ethers;
+    
+ }

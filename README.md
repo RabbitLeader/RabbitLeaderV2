@@ -1,4 +1,4 @@
-# RabbitLeader NFT 
+# RabbitLeaderV2 NFT 
 
 &nbsp;
 

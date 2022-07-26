@@ -13,7 +13,7 @@ contract DutchAuction {
     // Dutch Aution end price, by wei
     uint128 endPrice;
 
-    // Time in the auction range
+    // Price of the auction
     uint32 duration;
 
     // Dutch Aution start time
@@ -80,8 +80,12 @@ contract DutchAuction {
 
     }
 
-    function bid() 
+    function bid() external view returns(bool, uint) {
+        if (current() < endAt) false;
+        return (true, getPrice());
+    }
 
+    
 
     /**
      * @dev return `block.timestamp` or `now`
@@ -90,6 +94,9 @@ contract DutchAuction {
         return block.timestamp;
     }
 
-
-
-
+    function getPrice() internal view returns(uint) {
+        // price = 1 seconds * duration
+        uint price = duration * (current() - startAt);
+        return startPrice - price;
+    }
+}
